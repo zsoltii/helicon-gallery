@@ -1,0 +1,38 @@
+@body-background-color: #231f20;
+@default-font-size: 13px;
+@default-font-color: white;
+@default-font-family: "Open Sans", sans-serif;
+
+body {
+  background-color: @body-background-color;
+  margin: 0;
+  padding: 0;
+  border: 0;
+  font-size: @default-font-size;
+  color: @default-font-color;
+  font-family: @default-font-family;
+  overflow: hidden;
+}
+
+div#image {
+  display: block;
+  position: absolute;
+  left: 0px;
+  right: 0px;
+  min-width: 100%;
+  min-height: 100%;
+  overflow: hidden;
+
+  img {
+    position: absolute;
+    left: 50%;
+    right: 50%;
+    max-height: 100%;
+    max-width: 100%;
+    height: auto\9; /* ie8 */
+    width: auto;
+    margin-top: -50%;
+    margin-left: -50%;
+    overflow: hidden;
+  }
+}
