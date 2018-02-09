@@ -1,7 +1,9 @@
 @body-background-color: #231f20;
-@default-font-size: 13px;
+@body-background-color-half-transparent: #88231f20;
+@default-font-size: 1em;
 @default-font-color: white;
 @default-font-family: "Open Sans", sans-serif;
+@navigation-size: 90px;
 
 body {
   background-color: @body-background-color;
@@ -14,25 +16,63 @@ body {
   overflow: hidden;
 }
 
-div#image {
+div#heliconGalley {
   display: block;
   position: absolute;
   left: 0px;
   right: 0px;
   min-width: 100%;
   min-height: 100%;
-  overflow: hidden;
+  overflow: auto;
 
-  img {
+  div.goLeft, div.goRight {
+    position: fixed;
+    top: 50%;
+    margin-top: @navigation-size / 2 * -1;
+
+    div {
+      display: block;
+      width: @navigation-size;
+      height: @navigation-size;
+      line-height: @navigation-size;
+      border: none;
+      position: relative;
+      top: -50%;
+
+      background-image: url("../img/left.png");
+      background-size: cover;
+    }
+  }
+
+  div.goRight {
+    left: 100%;
+
+    div {
+      left: -100%;
+      -moz-transform: scaleX(-1);
+      -o-transform: scaleX(-1);
+      -webkit-transform: scaleX(-1);
+      transform: scaleX(-1);
+      filter: FlipH;
+      -ms-filter: "FlipH";
+    }
+  }
+
+  div.logo {
     position: absolute;
-    left: 50%;
-    right: 50%;
-    max-height: 100%;
-    max-width: 100%;
-    height: auto\9; /* ie8 */
-    width: auto;
-    margin-top: -50%;
-    margin-left: -50%;
-    overflow: hidden;
+    left: @default-font-size * 2;
+    top: @default-font-size * 2;
+    display: block;
+    background-color: @body-background-color;
+    width: 328px;
+    height: 126px;
+
+    div {
+      width: 100%;
+      height: 100%;
+      background-size: cover;
+      background-position: center;
+      background-image: url("http://imperialeagle.eu/sites/default/files/pannoneagle_logo_hatter_nelkul_projekt_nevvel_hu.png");
+    }
   }
 }
