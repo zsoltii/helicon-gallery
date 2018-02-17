@@ -1,9 +1,12 @@
 @body-background-color: #231f20;
 @body-background-color-half-transparent: #88231f20;
-@default-font-size: 1em;
+@default-font-size: 13px;
 @default-font-color: white;
 @default-font-family: "Open Sans", sans-serif;
+@default-border: solid @default-font-color 1px;
 @navigation-size: 90px;
+@logo-width: 328px;
+@logo-height: 126px;
 
 body {
   background-color: @body-background-color;
@@ -23,14 +26,14 @@ div#heliconGalley {
   right: 0px;
   min-width: 100%;
   min-height: 100%;
-  overflow: auto;
+  overflow: hidden;
 
   div.goLeft, div.goRight {
     position: fixed;
     top: 50%;
     margin-top: @navigation-size / 2 * -1;
 
-    div {
+    a {
       display: block;
       width: @navigation-size;
       height: @navigation-size;
@@ -39,16 +42,19 @@ div#heliconGalley {
       position: relative;
       top: -50%;
 
-      background-image: url("../img/left.png");
+      background-image: url("../img/navigation.png");
       background-size: cover;
+
+      &:hover, &:active, &:focus {
+        background-image: url("../img/navigation-hover.png");
+      }
     }
   }
 
   div.goRight {
-    left: 100%;
+    right: 0px;
 
-    div {
-      left: -100%;
+    a {
       -moz-transform: scaleX(-1);
       -o-transform: scaleX(-1);
       -webkit-transform: scaleX(-1);
@@ -58,14 +64,17 @@ div#heliconGalley {
     }
   }
 
-  div.logo {
+  div.logo, div.language {
     position: absolute;
-    left: @default-font-size * 2;
-    top: @default-font-size * 2;
     display: block;
-    background-color: @body-background-color;
-    width: 328px;
-    height: 126px;
+    top: @default-font-size * 2;
+    background-color: @body-background-color-half-transparent;
+  }
+
+  div.logo {
+    left: @default-font-size * 2;
+    width: @logo-width;
+    height: @logo-height;
 
     div {
       width: 100%;
@@ -74,5 +83,37 @@ div#heliconGalley {
       background-position: center;
       background-image: url("http://imperialeagle.eu/sites/default/files/pannoneagle_logo_hatter_nelkul_projekt_nevvel_hu.png");
     }
+  }
+
+  div.language {
+    left: @logo-width + (@default-font-size * 3);
+    width: auto;
+    height: auto;
+    padding: @default-font-size;
+  }
+
+  div.description, div.story {
+    position: absolute;
+    display: block;
+    overflow: auto;
+    background-color: @body-background-color-half-transparent;
+    padding: @default-font-size;
+  }
+
+  div.description {
+    width: 20%;
+    border: @default-border;
+    top: @default-font-size * 2;
+    right: @navigation-size + @default-font-size;
+
+  }
+
+  div.story {
+    bottom: 0px;
+    width: 100%;
+    height: auto;
+    max-height: 20%;
+    overflow: auto;
+    border-top: @default-border;
   }
 }
