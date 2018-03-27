@@ -64,7 +64,7 @@ div#heliconGalley {
     }
   }
 
-  div.logo, div.language {
+  div.logo, div.language, div.title {
     position: absolute;
     display: block;
     top: @default-font-size * 2;
@@ -85,11 +85,20 @@ div#heliconGalley {
     }
   }
 
-  div.language {
+  div.title, div.language {
     left: @logo-width + (@default-font-size * 3);
     width: auto;
     height: auto;
     padding: @default-font-size;
+  }
+
+  div.language {
+    top: @default-font-size * 5;
+  }
+
+  div.title {
+    font-size: @default-font-size * 1.5;
+    font-weight: bold;
   }
 
   div.description, div.story {
