@@ -1,21 +1,32 @@
 {
-  "name": ["example gallery", "Példa galéria"],
+  "name": {
+    "hu": "Példa galéria",
+    "en": "example gallery"
+  },
   "languages": ["en", "hu"],
   "defaultLanguage": "hu",
   "images": [
     {
       "url": "https://www.desktopbackground.org/download/o/2014/01/16/702386_green-alienware-backgrounds-wallpapers-para-hd-wallpapers-backgr_1920x1080_h.jpg",
-      "description": {
+      "title": {
         "hu": "csillagok",
         "en": "stars"
       },
+      "description": {
+        "hu": "csillagok<br>több csillag",
+        "en": "stars<br>more starts"
+      },
       "story": {
-        "hu": "csillagok story",
-        "en": "stars story"
+        "hu": "csillagok story<br>blabla",
+        "en": "stars story<br>blabla"
       }
     },
     {
       "url": "http://backgroundcheckall.com/wp-content/uploads/2017/12/beautiful-background-hd-11.jpg",
+      "title": {
+        "hu": "móló",
+        "en": "pier"
+      },
       "description": {
         "hu": "móló",
         "en": "pier"
