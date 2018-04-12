@@ -7,6 +7,8 @@
 @navigation-size: 90px;
 @logo-width: 328px;
 @logo-height: 126px;
+@language-font-color: @body-background-color;
+@language-background-color: @default-font-color;
 
 body {
   background-color: @body-background-color;
@@ -83,6 +85,30 @@ div#heliconGalley {
       background-position: center;
       background-image: url("http://imperialeagle.eu/sites/default/files/pannoneagle_logo_hatter_nelkul_projekt_nevvel_hu.png");
     }
+
+    div.hu {
+      background-image: url("http://imperialeagle.eu/sites/default/files/pannoneagle_logo_hatter_nelkul_projekt_nevvel_hu.png");
+    }
+
+    div.en {
+      background-image: url("http://imperialeagle.eu/sites/default/files/pannoneagle_logo_hatter_nelkul_projektnev_eng.png");
+    }
+
+    div.cs {
+      background-image: url("http://imperialeagle.eu/sites/default/files/pannoneagle_logo_hatter_nelkul_projektnev_cseh.png");
+    }
+
+    div.de {
+      background-image: url("http://imperialeagle.eu/sites/default/files/pannoneagle_logo_hatter_nelkul_projektnev_nemet.png");
+    }
+
+    div.sr {
+      background-image: url("http://imperialeagle.eu/sites/default/files/pannoneagle_logo_hatter_nelkul_projektnev_sr.png");
+    }
+
+    div.sk {
+      background-image: url("http://imperialeagle.eu/sites/default/files/pannoneagle_logo_hatter_nelkul_projektnev_sk.png");
+    }
   }
 
   div.title, div.language, div.imageTitle {
@@ -99,6 +125,42 @@ div#heliconGalley {
 
   div.language {
     top: @default-font-size * 7;
+    color: @language-font-color;
+
+    button, a {
+      display: block;
+      line-height: @default-font-size * 2;
+      background-color: @language-background-color;
+      margin: 0px;
+      text-align: right;
+    }
+
+    button {
+      padding: 1px 5px 1px 5px;
+      border: none;
+
+      &:hover, &:active {
+        cursor: pointer;
+      }
+    }
+
+    a {
+      padding: 0px 4px 0px 4px;
+      border: transparent solid 1px;
+      text-decoration: none;
+      &:hover, &:visited, &:active, &:focus {
+        color: @language-font-color;
+      }
+
+      img {
+        width: 18px;
+        height: 12px;
+      }
+    }
+
+    div.hidden {
+      display: none;
+    }
   }
 
   div.title {

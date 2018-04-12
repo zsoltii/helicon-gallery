@@ -1,5 +1,5 @@
 {
-  "name": {
+  "title": {
     "hu": "Példa galéria",
     "en": "example gallery"
   },
@@ -34,6 +34,17 @@
       "story": {
         "hu": "móló story",
         "en": "pier story"
+      }
+    },
+    {
+      "url": "http://backgroundcheckall.com/wp-content/uploads/2017/12/beautiful-background-hd-11.jpg",
+      "title": {
+        "hu": "móló",
+        "en": "pier"
+      },
+      "description": {
+        "hu": "móló",
+        "en": "pier"
       }
     }
   ]
