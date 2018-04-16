@@ -192,4 +192,21 @@ div#heliconGalley {
     overflow: auto;
     border-top: @default-border;
   }
+
+  div.function {
+    position: absolute;
+    display: block;
+    overflow: auto;
+    top: @default-font-size;
+    right: @default-font-size;
+    padding: @default-font-size / 2;
+
+    i {
+      padding: @default-font-size / 2;
+
+      .hidden {
+        display: none;
+      }
+    }
+  }
 }

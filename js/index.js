@@ -41,6 +41,21 @@ $(document).ready(function () {
         changeLanguage($(this).attr('data-language'));
         e.preventDefault();
     })
+    
+    $('.function i.fa-arrows-alt').click(function (e) {
+        fullScreen();
+        e.preventDefault();
+    });
+
+    $('.function i.fa-eye').click(function (e) {
+        showInfo();
+        e.preventDefault();
+    });
+
+    $('.function i.fa-eye-slash').click(function (e) {
+        hideInfo();
+        e.preventDefault();
+    });
 })
 
 function getUrlParameter(parameter) {
@@ -49,7 +64,6 @@ function getUrlParameter(parameter) {
 }
 
 function getGalleryPosition() {
-    var url = new URL(location);
     var hash = '' + location.hash;
     if (hash.length > 0) {
         hash = hash.substr(1);
@@ -186,7 +200,7 @@ function setStory() {
 }
 
 function setImage() {
-    newImageUrl = galleryJson.images[currentPosition].url;
+    var newImageUrl = galleryJson.images[currentPosition].url;
     if ((newImageUrl == undefined) || newImageUrl == null) {
         alert("image data error");
     } else {
@@ -206,4 +220,47 @@ function processNavigationVisibility() {
     } else {
         $('.goRight').show();
     }
+}
+
+function hideInfo() {
+    $("#heliconGalley div").not('.function').not('.backstretch').not('.backstretch-item').hide();
+    $('.function i.fa-eye').show();
+    $('.function i.fa-eye-slash').hide();
+}
+
+function showInfo() {
+    $('.logo, .logo div, .language, .title, .imageTitle').show();
+    $('.languageDropDown').removeAttr('style');
+    processNavigationVisibility();
+    setStory();
+    setDescription();
+    $('.function i.fa-eye').hide();
+    $('.function i.fa-eye-slash').show();
+}
+
+function fullScreen() {
+    var elem = document.getElementById("heliconGalley");
+    if (elem.requestFullscreen) {
+        elem.requestFullscreen();
+        document.onfullscreenchange = function ( event ) {
+            showInfo();
+        };
+    } else if (elem.msRequestFullscreen) {
+        elem.msRequestFullscreen();
+        document.msonfullscreenchange = function ( event ) {
+            showInfo();
+        };
+    } else if (elem.mozRequestFullScreen) {
+        elem.mozRequestFullScreen();
+        document.mozonfullscreenchange = function ( event ) {
+            showInfo();
+        };
+    } else if (elem.webkitRequestFullscreen) {
+        elem.webkitRequestFullscreen();
+        document.onwebkitfullscreenchange = function ( event ) {
+            showInfo();
+        };
+    }
+
+    hideInfo();
 }
