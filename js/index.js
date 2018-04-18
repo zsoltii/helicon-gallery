@@ -56,6 +56,14 @@ $(document).ready(function () {
         hideInfo();
         e.preventDefault();
     });
+
+    $(document).keydown(function (e) {
+        if (e.which == 39 && currentPosition < (imagesLength - 1)) {
+            $('.goRight a').click();
+        } else if (e.which == 37 && currentPosition > 0) {
+            $('.goLeft a').click();
+        }
+    });
 })
 
 function getUrlParameter(parameter) {
@@ -116,6 +124,7 @@ function changeLanguage(language) {
 function loadImage() {
     location.href = '#' + (currentPosition + 1);
 
+    showInfo();
     setTitle();
     setImageTitle();
     setDescription();
@@ -242,25 +251,11 @@ function fullScreen() {
     var elem = document.getElementById("heliconGalley");
     if (elem.requestFullscreen) {
         elem.requestFullscreen();
-        document.onfullscreenchange = function ( event ) {
-            showInfo();
-        };
     } else if (elem.msRequestFullscreen) {
         elem.msRequestFullscreen();
-        document.msonfullscreenchange = function ( event ) {
-            showInfo();
-        };
     } else if (elem.mozRequestFullScreen) {
         elem.mozRequestFullScreen();
-        document.mozonfullscreenchange = function ( event ) {
-            showInfo();
-        };
     } else if (elem.webkitRequestFullscreen) {
         elem.webkitRequestFullscreen();
-        document.onwebkitfullscreenchange = function ( event ) {
-            showInfo();
-        };
     }
-
-    hideInfo();
 }

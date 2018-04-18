@@ -1,14 +1,14 @@
 @body-background-color: #231f20;
-@body-background-color-half-transparent: #88231f20;
 @default-font-size: 13px;
 @default-font-color: white;
 @default-font-family: "Open Sans", sans-serif;
-@default-border: solid @default-font-color 1px;
+@description-background-color: rgba(255, 255, 255, 0.5);
+@default-border: none;
 @navigation-size: 90px;
 @logo-width: 328px;
 @logo-height: 126px;
 @language-font-color: @body-background-color;
-@language-background-color: @default-font-color;
+@language-background-color: @description-background-color;
 
 body {
   background-color: @body-background-color;
@@ -37,40 +37,51 @@ div#heliconGalley {
 
     a {
       display: block;
-      width: @navigation-size;
-      height: @navigation-size;
-      line-height: @navigation-size;
+      //width: @default-font-size;
+      //height: @default-font-size;
+      line-height: @default-font-size;
       border: none;
       position: relative;
+
       top: -50%;
 
-      background-image: url("../img/navigation.png");
+      text-decoration: none;
+      color: @default-font-color;
+      font-size: @default-font-size * 3;
+
+      //background-image: url("../img/navigation.png");
       background-size: cover;
 
       &:hover, &:active, &:focus {
-        background-image: url("../img/navigation-hover.png");
+        //background-image: url("../img/navigation-hover.png");
+        text-decoration: none;
+        color: @default-font-color;
       }
     }
   }
 
+  div.goLeft {
+    padding-left: @default-font-size;
+  }
+
   div.goRight {
     right: 0px;
+    padding-right: @default-font-size;
 
-    a {
-      -moz-transform: scaleX(-1);
-      -o-transform: scaleX(-1);
-      -webkit-transform: scaleX(-1);
-      transform: scaleX(-1);
-      filter: FlipH;
-      -ms-filter: "FlipH";
-    }
+    //a {
+    //  -moz-transform: scaleX(-1);
+    //  -o-transform: scaleX(-1);
+    //  -webkit-transform: scaleX(-1);
+    //  transform: scaleX(-1);
+    //  filter: FlipH;
+    //  -ms-filter: "FlipH";
+    //}
   }
 
   div.logo, div.language, div.title, div.imageTitle {
     position: absolute;
     display: block;
     top: @default-font-size * 2;
-    background-color: @body-background-color-half-transparent;
   }
 
   div.logo {
@@ -133,13 +144,14 @@ div#heliconGalley {
       background-color: @language-background-color;
       margin: 0px;
       text-align: right;
+      border-radius: @default-font-size / 3;
     }
 
     button {
       padding: 1px 5px 1px 5px;
       border: none;
 
-      &:hover, &:active {
+      &:hover, &:active, &:focus, &:visited {
         cursor: pointer;
       }
     }
@@ -150,6 +162,7 @@ div#heliconGalley {
       text-decoration: none;
       &:hover, &:visited, &:active, &:focus {
         color: @language-font-color;
+        text-decoration: none;
       }
 
       img {
@@ -172,25 +185,27 @@ div#heliconGalley {
     position: absolute;
     display: block;
     overflow: auto;
-    background-color: @body-background-color-half-transparent;
     padding: @default-font-size;
+    background-color: @description-background-color;
+    border: @default-border;
+    border-radius: @default-font-size;
+    color: @body-background-color;
   }
 
   div.description {
     width: 20%;
-    border: @default-border;
     top: @default-font-size * 2;
     right: @navigation-size + @default-font-size;
 
   }
 
   div.story {
-    bottom: 0px;
-    width: 100%;
+    bottom: @default-font-size;
+    left: @default-font-size;
+    width: calc(100% - (@default-font-size * 4));
     height: auto;
     max-height: 20%;
     overflow: auto;
-    border-top: @default-border;
   }
 
   div.function {
