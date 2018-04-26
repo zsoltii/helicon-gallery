@@ -224,4 +224,25 @@ div#heliconGalley {
       }
     }
   }
+
+  div i {
+    cursor: pointer;
+
+    &.fas.fa-arrow-up {
+      -moz-transform: rotateZ(45deg);
+      -o-transform: rotateZ(45deg);
+      -webkit-transform: rotateZ(45deg);
+      transform: rotateZ(45deg);
+
+      filter: FlipH;
+      -ms-filter: "FlipH";
+
+      &.fullscreen {
+        -moz-transform: rotateZ(-135deg);
+        -o-transform: rotateZ(-135deg);
+        -webkit-transform: rotateZ(-135deg);
+        transform: rotateZ(-135deg);
+      }
+    }
+  }
 }

@@ -42,8 +42,8 @@ $(document).ready(function () {
         e.preventDefault();
     })
     
-    $('.function i.fa-arrows-alt').click(function (e) {
-        fullScreen();
+    $('.function i.fa-arrow-up').click(function (e) {
+        toggleFullScreen();
         e.preventDefault();
     });
 
@@ -64,6 +64,22 @@ $(document).ready(function () {
             $('.goLeft a').click();
         }
     });
+
+    document.onfullscreenchange = function (event) {
+        changeFullScreenIcon(event);
+    };
+
+    document.MSFullscreenChange = function (event) {
+        changeFullScreenIcon(event);
+    };
+
+    document.onmozfullscreenchange = function (event) {
+        changeFullScreenIcon(event);
+    };
+
+    document.onwebkitfullscreenchange = function (event) {
+        changeFullScreenIcon(event);
+    };
 })
 
 function getUrlParameter(parameter) {
@@ -247,15 +263,35 @@ function showInfo() {
     $('.function i.fa-eye-slash').show();
 }
 
-function fullScreen() {
-    var elem = document.getElementById("heliconGalley");
-    if (elem.requestFullscreen) {
-        elem.requestFullscreen();
-    } else if (elem.msRequestFullscreen) {
-        elem.msRequestFullscreen();
-    } else if (elem.mozRequestFullScreen) {
-        elem.mozRequestFullScreen();
-    } else if (elem.webkitRequestFullscreen) {
-        elem.webkitRequestFullscreen();
+function toggleFullScreen() {
+    if(document.fullscreenElement || document.msFullscreenElement || document.mozFullscreenElement || document.webkitFullscreenElement) {
+        if (document.exitFullscreen) {
+            document.exitFullscreen();
+        } else if (document.msExitFullscreen) {
+            document.msExitFullscreen();
+        } else if (document.mozExitFullscreen) {
+            document.mozExitFullscreen();
+        } else if (document.webkitExitFullscreen) {
+            document.webkitExitFullscreen();
+        }
+    } else {
+        var elem = document.getElementById("heliconGalley");
+        if (elem.requestFullscreen) {
+            elem.requestFullscreen();
+        } else if (elem.msRequestFullscreen) {
+            elem.msRequestFullscreen();
+        } else if (elem.mozRequestFullScreen) {
+            elem.mozRequestFullScreen();
+        } else if (elem.webkitRequestFullscreen) {
+            elem.webkitRequestFullscreen();
+        }
+    }
+}
+
+function changeFullScreenIcon(event) {
+    if(document.fullscreenElement || document.msFullscreenElement || document.mozFullscreenElement || document.webkitFullscreenElement) {
+        $('div i.fas.fa-arrow-up').addClass('fullscreen');
+    } else {
+        $('div i.fas.fa-arrow-up').removeClass('fullscreen');
     }
 }
