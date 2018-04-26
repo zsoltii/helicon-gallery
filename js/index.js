@@ -157,6 +157,9 @@ function setTitle() {
         if ((newTitle == undefined) || newTitle == null) {
             newTitle = galleryJson.title[defaultLanguage];
         }
+        if ((newTitle == undefined) || newTitle == null) {
+            newTitle = getFirstValue(galleryJson.title);
+        }
     }
 
     if ((newTitle == undefined) || newTitle == null) {
@@ -176,6 +179,9 @@ function setImageTitle() {
         if ((newImageTitle == undefined) || newImageTitle == null) {
             newImageTitle = galleryJson.images[currentPosition].title[defaultLanguage];
         }
+        if ((newImageTitle == undefined) || newImageTitle == null) {
+            newImageTitle = getFirstValue(galleryJson.images[currentPosition].title);
+        }
     }
 
     if ((newImageTitle == undefined) || newImageTitle == null) {
@@ -193,6 +199,9 @@ function setDescription() {
         newDescription = galleryJson.images[currentPosition].description[currentLanguage];
         if ((newDescription == undefined) || newDescription == null) {
             newDescription = galleryJson.images[currentPosition].description[defaultLanguage];
+        }
+        if ((newDescription == undefined) || newDescription == null) {
+            newDescription = getFirstValue(galleryJson.images[currentPosition].description);
         }
     }
 
@@ -214,6 +223,9 @@ function setStory() {
         if ((newStory == undefined) || newStory == null) {
             newStory = galleryJson.images[currentPosition].story[defaultLanguage];
         }
+        if ((newStory == undefined) || newStory == null) {
+            newStory = getFirstValue(galleryJson.images[currentPosition].story);
+        }
     }
     if ((newStory == undefined) || newStory == null) {
         $(".story").text('');
@@ -229,7 +241,7 @@ function setImage() {
     if ((newImageUrl == undefined) || newImageUrl == null) {
         alert("image data error");
     } else {
-        $("#heliconGalley").backstretch(newImageUrl);
+        $("#heliconGalley").backstretch('gallery/' + currentGallery + '/image/' + newImageUrl);
     }
 }
 
@@ -264,13 +276,13 @@ function showInfo() {
 }
 
 function toggleFullScreen() {
-    if(document.fullscreenElement || document.msFullscreenElement || document.mozFullscreenElement || document.webkitFullscreenElement) {
+    if(document.fullscreenElement || document.MSFullscreenElement || document.mozFullScreenElement || document.webkitFullscreenElement) {
         if (document.exitFullscreen) {
             document.exitFullscreen();
         } else if (document.msExitFullscreen) {
             document.msExitFullscreen();
-        } else if (document.mozExitFullscreen) {
-            document.mozExitFullscreen();
+        } else if (document.mozCancelFullScreen) {
+            document.mozCancelFullScreen();
         } else if (document.webkitExitFullscreen) {
             document.webkitExitFullscreen();
         }
@@ -289,9 +301,13 @@ function toggleFullScreen() {
 }
 
 function changeFullScreenIcon(event) {
-    if(document.fullscreenElement || document.msFullscreenElement || document.mozFullscreenElement || document.webkitFullscreenElement) {
+    if(document.fullscreenElement || document.msFullscreenElement || document.mozFullScreenElement || document.webkitFullscreenElement) {
         $('div i.fas.fa-arrow-up').addClass('fullscreen');
     } else {
         $('div i.fas.fa-arrow-up').removeClass('fullscreen');
     }
+}
+
+function getFirstValue(obj) {
+    return obj[Object.keys(obj)[0]];
 }
