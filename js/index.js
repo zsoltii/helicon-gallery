@@ -276,7 +276,7 @@ function showInfo() {
 }
 
 function toggleFullScreen() {
-    if(document.fullscreenElement || document.msFullscreenElement || document.mozFullscreenElement || document.webkitFullscreenElement) {
+    if(document.fullscreenElement || document.MSFullscreenElement || document.mozFullScreenElement || document.webkitFullscreenElement) {
         if (document.exitFullscreen) {
             document.exitFullscreen();
         } else if (document.msExitFullscreen) {
