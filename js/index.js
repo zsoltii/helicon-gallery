@@ -157,6 +157,9 @@ function setTitle() {
         if ((newTitle == undefined) || newTitle == null) {
             newTitle = galleryJson.title[defaultLanguage];
         }
+        if ((newTitle == undefined) || newTitle == null) {
+            newTitle = firstValue(galleryJson.title);
+        }
     }
 
     if ((newTitle == undefined) || newTitle == null) {
@@ -176,6 +179,9 @@ function setImageTitle() {
         if ((newImageTitle == undefined) || newImageTitle == null) {
             newImageTitle = galleryJson.images[currentPosition].title[defaultLanguage];
         }
+        if ((newImageTitle == undefined) || newImageTitle == null) {
+            newImageTitle = firstValue(galleryJson.images[currentPosition].title);
+        }
     }
 
     if ((newImageTitle == undefined) || newImageTitle == null) {
@@ -193,6 +199,9 @@ function setDescription() {
         newDescription = galleryJson.images[currentPosition].description[currentLanguage];
         if ((newDescription == undefined) || newDescription == null) {
             newDescription = galleryJson.images[currentPosition].description[defaultLanguage];
+        }
+        if ((newDescription == undefined) || newDescription == null) {
+            newDescription = firstValue(galleryJson.images[currentPosition].description);
         }
     }
 
@@ -214,6 +223,9 @@ function setStory() {
         if ((newStory == undefined) || newStory == null) {
             newStory = galleryJson.images[currentPosition].story[defaultLanguage];
         }
+        if ((newStory == undefined) || newStory == null) {
+            newStory = firstValue(galleryJson.images[currentPosition].story);
+        }
     }
     if ((newStory == undefined) || newStory == null) {
         $(".story").text('');
@@ -229,7 +241,7 @@ function setImage() {
     if ((newImageUrl == undefined) || newImageUrl == null) {
         alert("image data error");
     } else {
-        $("#heliconGalley").backstretch(newImageUrl);
+        $("#heliconGalley").backstretch('gallery/' + currentGallery + '/image/' + newImageUrl);
     }
 }
 
@@ -294,4 +306,8 @@ function changeFullScreenIcon(event) {
     } else {
         $('div i.fas.fa-arrow-up').removeClass('fullscreen');
     }
+}
+
+function firstValue(obj) {
+    return obj[Object.keys(obj)[0]];
 }

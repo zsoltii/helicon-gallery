@@ -7,44 +7,40 @@
   "defaultLanguage": "hu",
   "images": [
     {
-      "url": "https://www.desktopbackground.org/download/o/2014/01/16/702386_green-alienware-backgrounds-wallpapers-para-hd-wallpapers-backgr_1920x1080_h.jpg",
+      "url": "cinege.jpg",
       "title": {
-        "hu": "csillagok",
+        "hu": "Széncinege",
         "en": "stars"
       },
       "description": {
-        "hu": "csillagok<br>több csillag",
-        "en": "stars<br>more starts"
+        "hu": "Élőhelye kiterjed Európa nagy részére, Közép- és Észak-Ázsiára, valamint Észak-Afrika egyes részeire, ahol általában véve bármilyen összetételű erdőségben képes megtelepedni. A legtöbb széncinege nem vonuló madár. Kizárólag a nagyon hideg, kemény telek elől vonulnak el. 2005-ben több alfajjal egy csoportba sorolták. A DNS-vizsgálatok kimutatták, hogy ezen alfajok eltérnek a széncinegéktől, ezért napjainkban két alcsoportra osztják őket, a jávai széncinege (Parus cinereus) a Cinereus csoportba tartozik, amely Dél-Ázsiában él és a japán széncinege (Parus minor), amelynek élőhelye az orosz Távol-Kelet és Japán a minor alcsoportba tartozik. A széncinege továbbra is a Parus nemzetség legelterjedtebb tagja.",
+        "en": "The great tit is a distinctive bird with a black head and neck, prominent white cheeks, olive upperparts and yellow underparts, with some variation amongst the numerous subspecies. It is predominantly insectivorous in the summer, but will consume a wider range of food items in the winter months, including small hibernating bats.[2] Like all tits it is a cavity nester, usually nesting in a hole in a tree. The female lays around 12 eggs and incubates them alone, although both parents raise the chicks. In most years the pair will raise two broods. The nests may be raided by woodpeckers, squirrels and weasels and infested with fleas, and adults may be hunted by sparrowhawks. The great tit has adapted well to human changes in the environment and is a common and familiar bird in urban parks and gardens. The great tit is also an important study species in ornithology."
       },
       "story": {
-        "hu": "csillagok story<br>blabla",
-        "en": "stars story<br>blabla"
+        "hu": "A <b>széncinege</b>, sokszor becézően <b>széncinke</b> <i>(Parus major)</i> a <a href='https://hu.wikipedia.org/wiki/Ver%C3%A9balak%C3%BAak' title='Verébalakúak' target='_blank'>verébalakúak</a> <i>(Passeriformes)</i> rendjébe, ezen belül a <a href='https://hu.wikipedia.org/wiki/Cinegef%C3%A9l%C3%A9k' title='Cinegefélék' target='_blank'>cinegefélék</a> <i>(Paridae)</i> családjába tartozó apró termetű, közismert és közkedvelt madárfaj.",
+        "en": "The great tit (Parus major) is a passerine bird in the tit family Paridae. It is a widespread and common species throughout Europe, the Middle East, Central and Northern Asia, and parts of North Africa where it is generally resident in any sort of woodland; most great tits do not migrate except in extremely harsh winters. Until 2005 this species was lumped with numerous other subspecies. DNA studies have shown these other subspecies to be distinctive from the great tit and these have now been separated as two distinct species, the cinereous tit of southern Asia, and the Japanese tit of East Asia. The great tit remains the most widespread species in the genus Parus."
       }
     },
     {
-      "url": "http://backgroundcheckall.com/wp-content/uploads/2017/12/beautiful-background-hd-11.jpg",
+      "url": "capa.jpg",
       "title": {
-        "hu": "móló",
-        "en": "pier"
+        "hu": "Cápa",
+        "en": "Shark"
       },
       "description": {
-        "hu": "móló",
-        "en": "pier"
+        "en": "Sharks are a group of elasmobranch fish characterized by a cartilaginous skeleton, five to seven gill slits on the sides of the head, and pectoral fins that are not fused to the head. Modern sharks are classified within the clade Selachimorpha (or Selachii) and are the sister group to the rays. However, the term 'shark' has also been used for extinct members of the subclass Elasmobranchii outside the Selachimorpha, such as Cladoselache and Xenacanthus, as well as other Chondrichthyes such as the holocephalid eugenedontidans."
       },
       "story": {
-        "hu": "móló story",
-        "en": "pier story"
+        "hu": "Kopoltyúval lélegeznek. A cápák teste hosszúkás, áramvonalas, orsó alakú, hengeres, keresztmetszete csaknem kör alakú. Egyes alakok egészen kígyószerűen megnyúltak, míg a pörölycápafélék koponyája oldalirányban erőteljesen kiszélesedett, így a testük mintegy kalapács alakúvá vált. Mellúszóik elülső szegélye nem nőtt össze teljes mértékben a testtel, így viszonylag elég szabadok. Farokúszójuk igen nagy felületű, minden esetben aszimmetrikus, ún. heterocerk farokúszó. Egy nagyobb felső, és egy kisebb alsó lebenyből áll."
       }
     },
     {
-      "url": "http://backgroundcheckall.com/wp-content/uploads/2017/12/beautiful-background-hd-11.jpg",
+      "url": "borz.jpg",
       "title": {
-        "hu": "móló",
-        "en": "pier"
+        "hu": "Borz"
       },
       "description": {
-        "hu": "móló",
-        "en": "pier"
+        "hu": "A borz (Meles meles) a ragadozók (Carnivora) rendjén belül a menyétfélék (Mustelidae) családjába tartozó faj. Ez a faj a borzformák (Melinae) alcsaládjának névadó tagja és egyben az alcsalád legismertebb faja is. Hogy alcsaládbeli rokonaitól elkülöníthető legyen gyakran használják rá az európai borz vagy az eurázsiai borz elnevezést is."
       }
     }
   ]

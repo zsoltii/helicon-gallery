@@ -2,11 +2,14 @@
 @default-font-size: 13px;
 @default-font-color: white;
 @default-font-family: "Open Sans", sans-serif;
+@default-text-shadow-color: rgba(0, 0, 0, 0.1);
+@default-text-shadow:-1px 0 @default-text-shadow-color, 0 1px @default-text-shadow-color, 1px 0 @default-text-shadow-color, 0 -1px @default-text-shadow-color;
 @description-background-color: rgba(255, 255, 255, 0.5);
 @default-border: none;
 @navigation-size: 90px;
 @logo-width: 328px;
 @logo-height: 126px;
+@logo-background-color: rgba(35, 31, 32, 0.75);
 @language-font-color: @body-background-color;
 @language-background-color: @description-background-color;
 
@@ -88,16 +91,13 @@ div#heliconGalley {
     left: @default-font-size * 2;
     width: @logo-width;
     height: @logo-height;
+    background-color: @logo-background-color;
 
     div {
       width: 100%;
       height: 100%;
       background-size: cover;
       background-position: center;
-      background-image: url("http://imperialeagle.eu/sites/default/files/pannoneagle_logo_hatter_nelkul_projekt_nevvel_hu.png");
-    }
-
-    div.hu {
       background-image: url("http://imperialeagle.eu/sites/default/files/pannoneagle_logo_hatter_nelkul_projekt_nevvel_hu.png");
     }
 
@@ -132,6 +132,10 @@ div#heliconGalley {
   div.imageTitle {
     top: @default-font-size * 4.5;
     font-weight: bold;
+  }
+
+  div.title, div.imageTitle {
+    text-shadow: @default-text-shadow;
   }
 
   div.language {
