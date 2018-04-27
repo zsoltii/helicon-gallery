@@ -112,7 +112,7 @@ function initGallery(data) {
     galleryJson = data;
 
     var urlLanguage = getUrlParameter("language").trim();
-    if (urlLanguage.length > 0 && galleryJson.languages.includes(urlLanguage)) {
+    if (urlLanguage.length > 0 && galleryJson.languages.indexOf(urlLanguage) > -1) {
         defaultLanguage = urlLanguage;
     } else {
         defaultLanguage = galleryJson.defaultLanguage;
