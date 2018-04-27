@@ -4,8 +4,22 @@ var defaultLanguage = null;
 var currentLanguage = null;
 var currentPosition = null;
 var imagesLength = null;
+var queryString = (function(a) { //IE compatible
+    if (a == "") return {};
+    var b = {};
+    for (var i = 0; i < a.length; ++i)
+    {
+        var p=a[i].split('=', 2);
+        if (p.length == 1)
+            b[p[0]] = "";
+        else
+            b[p[0]] = decodeURIComponent(p[1].replace(/\+/g, " "));
+    }
+    return b;
+})(window.location.search.substr(1).split('&'));
 
 $(document).ready(function () {
+
     currentGallery = getUrlParameter("gallery");
 
     $.getJSON("gallery/" + currentGallery + "/data.json")
@@ -83,8 +97,7 @@ $(document).ready(function () {
 })
 
 function getUrlParameter(parameter) {
-    var url = new URL(location);
-    return '' + url.searchParams.get(parameter);
+    return '' + queryString[parameter];
 }
 
 function getGalleryPosition() {
@@ -158,7 +171,7 @@ function setTitle() {
             newTitle = galleryJson.title[defaultLanguage];
         }
         if ((newTitle == undefined) || newTitle == null) {
-            newTitle = firstValue(galleryJson.title);
+            newTitle = getFirstValue(galleryJson.title);
         }
     }
 
@@ -180,7 +193,7 @@ function setImageTitle() {
             newImageTitle = galleryJson.images[currentPosition].title[defaultLanguage];
         }
         if ((newImageTitle == undefined) || newImageTitle == null) {
-            newImageTitle = firstValue(galleryJson.images[currentPosition].title);
+            newImageTitle = getFirstValue(galleryJson.images[currentPosition].title);
         }
     }
 
@@ -201,7 +214,7 @@ function setDescription() {
             newDescription = galleryJson.images[currentPosition].description[defaultLanguage];
         }
         if ((newDescription == undefined) || newDescription == null) {
-            newDescription = firstValue(galleryJson.images[currentPosition].description);
+            newDescription = getFirstValue(galleryJson.images[currentPosition].description);
         }
     }
 
@@ -224,7 +237,7 @@ function setStory() {
             newStory = galleryJson.images[currentPosition].story[defaultLanguage];
         }
         if ((newStory == undefined) || newStory == null) {
-            newStory = firstValue(galleryJson.images[currentPosition].story);
+            newStory = getFirstValue(galleryJson.images[currentPosition].story);
         }
     }
     if ((newStory == undefined) || newStory == null) {
@@ -281,8 +294,8 @@ function toggleFullScreen() {
             document.exitFullscreen();
         } else if (document.msExitFullscreen) {
             document.msExitFullscreen();
-        } else if (document.mozExitFullscreen) {
-            document.mozExitFullscreen();
+        } else if (document.mozCancelFullScreen) {
+            document.mozCancelFullScreen();
         } else if (document.webkitExitFullscreen) {
             document.webkitExitFullscreen();
         }
@@ -301,13 +314,13 @@ function toggleFullScreen() {
 }
 
 function changeFullScreenIcon(event) {
-    if(document.fullscreenElement || document.msFullscreenElement || document.mozFullscreenElement || document.webkitFullscreenElement) {
+    if(document.fullscreenElement || document.msFullscreenElement || document.mozFullScreenElement || document.webkitFullscreenElement) {
         $('div i.fas.fa-arrow-up').addClass('fullscreen');
     } else {
         $('div i.fas.fa-arrow-up').removeClass('fullscreen');
     }
 }
 
-function firstValue(obj) {
+function getFirstValue(obj) {
     return obj[Object.keys(obj)[0]];
 }

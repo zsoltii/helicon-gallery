@@ -2,14 +2,14 @@
 @default-font-size: 13px;
 @default-font-color: white;
 @default-font-family: "Open Sans", sans-serif;
-@default-text-shadow-color: rgba(0, 0, 0, 0.1);
-@default-text-shadow:-1px 0 @default-text-shadow-color, 0 1px @default-text-shadow-color, 1px 0 @default-text-shadow-color, 0 -1px @default-text-shadow-color;
 @description-background-color: rgba(255, 255, 255, 0.5);
 @default-border: none;
 @navigation-size: 90px;
 @logo-width: 328px;
 @logo-height: 126px;
-@logo-background-color: rgba(35, 31, 32, 0.75);
+@default-font-shadow-color: rgba(0, 0, 0, 0.1);
+@default-font-shadow: -1px 0 @default-font-shadow-color, 0 1px @default-font-shadow-color, 1px 0 @default-font-shadow-color, 0 -1px @default-font-shadow-color;
+@logo-background-color: rgba(35, 31, 32, 0.5);
 @language-font-color: @body-background-color;
 @language-background-color: @description-background-color;
 
@@ -70,15 +70,6 @@ div#heliconGalley {
   div.goRight {
     right: 0px;
     padding-right: @default-font-size;
-
-    //a {
-    //  -moz-transform: scaleX(-1);
-    //  -o-transform: scaleX(-1);
-    //  -webkit-transform: scaleX(-1);
-    //  transform: scaleX(-1);
-    //  filter: FlipH;
-    //  -ms-filter: "FlipH";
-    //}
   }
 
   div.logo, div.language, div.title, div.imageTitle {
@@ -135,7 +126,7 @@ div#heliconGalley {
   }
 
   div.title, div.imageTitle {
-    text-shadow: @default-text-shadow;
+    text-shadow: @default-font-shadow;
   }
 
   div.language {
