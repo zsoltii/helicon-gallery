@@ -1,3 +1,4 @@
+var INVALID_HTML_ELEMENTS = ["html", "body", "link", "script", "head"];
 var currentGallery = null;
 var galleryJson = null;
 var defaultLanguage = null;
@@ -138,8 +139,18 @@ function initCurrentPosition() {
 function changeLanguage(language) {
     currentLanguage = language;
 
-    $('.logo div').removeClass();
-    $('.logo div').addClass(currentLanguage);
+    var logoUrl = null;
+
+    if (galleryJson.logo.hasOwnProperty(language)) {
+        $('.logo div').css("background-image", "url('" + galleryJson.logo[language] + "')");
+    } else if (galleryJson.logo.hasOwnProperty(defaultLanguage)) {
+        $('.logo div').css("background-image", "url('" + galleryJson.logo[defaultLanguage] + "')");
+    } else {
+        $('.logo div').css("background-image", "url('" + getFirstValue(galleryJson.logo) + "')");
+    }
+
+    // $('.logo div').removeClass();
+    // $('.logo div').addClass(currentLanguage);
 
     loadImage();
     $('.language div.languageDropDown').addClass('hidden');
@@ -209,12 +220,14 @@ function setDescription() {
     var newDescription = null;
 
     if (hasDescription) {
-        newDescription = galleryJson.images[currentPosition].description[currentLanguage];
-        if ((newDescription == undefined) || newDescription == null) {
-            newDescription = galleryJson.images[currentPosition].description[defaultLanguage];
+        if (arrayContains(galleryJson.images[currentPosition].description), currentLanguage) {
+            newDescription = getContent( currentLanguage, "description");
+        }
+        if (((newDescription == undefined) || newDescription == null) && arrayContains(galleryJson.images[currentPosition].description, defaultLanguage)) {
+            newDescription = getContent( defaultLanguage, "description");
         }
         if ((newDescription == undefined) || newDescription == null) {
-            newDescription = getFirstValue(galleryJson.images[currentPosition].description);
+            newDescription = getContent( getFirstValue(galleryJson.images[currentPosition].description), "description");
         }
     }
 
@@ -232,14 +245,17 @@ function setStory() {
     var newStory = null;
 
     if (hasStory) {
-        newStory = galleryJson.images[currentPosition].story[currentLanguage];
-        if ((newStory == undefined) || newStory == null) {
-            newStory = galleryJson.images[currentPosition].story[defaultLanguage];
+        if (arrayContains(galleryJson.images[currentPosition].story), currentLanguage) {
+            newStory = getContent( currentLanguage, "story");
+        }
+        if (((newStory == undefined) || newStory == null) && arrayContains(galleryJson.images[currentPosition].story, defaultLanguage)) {
+            newStory = getContent( defaultLanguage, "story");
         }
         if ((newStory == undefined) || newStory == null) {
-            newStory = getFirstValue(galleryJson.images[currentPosition].story);
+            newStory = getContent( getFirstValue(galleryJson.images[currentPosition].story), "story");
         }
     }
+
     if ((newStory == undefined) || newStory == null) {
         $(".story").text('');
         $(".story").hide();
@@ -323,4 +339,38 @@ function changeFullScreenIcon(event) {
 
 function getFirstValue(obj) {
     return obj[Object.keys(obj)[0]];
+}
+
+function arrayContains(searchableArray, search) {
+    return (searchableArray.indexOf(search) > -1);
+}
+
+function getContent(language, type) {
+    var result = null;
+    var url = "gallery/" + currentGallery + "/html/" + galleryJson.images[currentPosition].contentFolder + "/" + language + "/" + type + ".html";
+    jQuery.ajax({
+        url: url,
+        async: false,
+        success: function(data) {
+            result = data;
+        },
+        error: function (xhr, ajaxOptions, thrownError){
+            console.log("Server error. [status: " + xhr.status + "][throw: " + thrownError + "][url: " + url + "]");
+        }
+    });
+    var invalid = false;
+    if (result != null) {
+        INVALID_HTML_ELEMENTS.forEach(function (element) {
+            if (!invalid && result.toLowerCase().indexOf("<" + element) > -1) {
+                invalid = true;
+            }
+        });
+    }
+
+    if (invalid) {
+        result = true;
+        console.log("Invalid html content. It contains an element: " + INVALID_HTML_ELEMENTS.join(", "));
+    }
+
+    return result;
 }

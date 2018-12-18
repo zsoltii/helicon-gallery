@@ -1,53 +1,48 @@
 {
+  "languages": ["en", "hu"],
+  "defaultLanguage": "hu",
   "title": {
     "hu": "Példa galéria",
     "en": "example gallery"
   },
-  "languages": ["en", "hu"],
-  "defaultLanguage": "hu",
+  "logo": {
+    "hu": "http://imperialeagle.eu/sites/default/files/pannoneagle_logo_hatter_nelkul_projekt_nevvel_hu.png",
+    "en": "http://imperialeagle.eu/sites/default/files/pannoneagle_logo_hatter_nelkul_projektnev_eng.png",
+    "cs": "http://imperialeagle.eu/sites/default/files/pannoneagle_logo_hatter_nelkul_projektnev_cseh.png",
+    "de": "http://imperialeagle.eu/sites/default/files/pannoneagle_logo_hatter_nelkul_projektnev_nemet.png",
+    "sr": "http://imperialeagle.eu/sites/default/files/pannoneagle_logo_hatter_nelkul_projektnev_sr.png",
+    "sk": "http://imperialeagle.eu/sites/default/files/pannoneagle_logo_hatter_nelkul_projektnev_sk.png"
+  },
   "images": [
     {
       "url": "barnaretiheja.jpg",
+      "contentFolder": "barnaretiheja",
       "title": {
         "hu": "Barna rétihéja",
         "en": "Western Marsh Harrier"
       },
-      "description": {
-        "hu": "A faj állománya az 1970-es években nagyon megfogyatkozott. A dúvadirtás szabályainak szigorodása kedvezően hatott a fészkelő párok számára. A kedvező helyzet megőrzéséhez a vadászati és természetvédelmi szakemberek együttműködésére van szükség. Vonuló madár, április és október között tartózkodik hazánkban. A telet általában Afrika Szaharán túli részén tölti, de egyre több esetben fordulnak elő áttelelő példányok.",
-        "en": "The western marsh harrier (Circus aeruginosus) is a large harrier, a bird of prey from temperate and subtropical western Eurasia and adjacent Africa. It is also known as the Eurasian marsh harrier. The genus name Circus is derived from the Ancient Greek kirkos, referring to a bird of prey named for its circling flight (kirkos, 'circle'), probably the hen harrier. The specific aeruginosus is Latin for 'rusty'.[2]<br><br>Formerly, a number of relatives were included in C. aeruginosus, which was then known as 'marsh harrier'. The related taxa are now generally considered to be separate species: the eastern marsh harrier (C. spilonotus), the Papuan harrier (C. spilothorax) of eastern Asia and the Wallacea, the swamp harrier (C. approximans) of Australasia and the Madagascar marsh harrier (C. maillardi) of the western Indian Ocean islands."
-      },
-      "story": {
-        "hu": "A barna rétihéja (Circus aeruginosus) a madarak osztályának a vágómadár-alakúak (Accipitriformes) rendjébe, ezen belül a vágómadárfélék (Accipitridae) családjába tartozó faj.",
-        "en": "The western marsh harrier is 43 to 54 cm (17 to 21 in) in length, has a wingspan of 115 to 130 cm (45 to 51 in) and a weight of 400 to 650 g (14 to 23 oz) in males and 500 to 800 g (18 to 28 oz) in females. It is a large, bulky harrier with fairly broad wings, and has a strong and peculiar sexual dichromatism. The male's plumage is mostly a cryptic reddish-brown with lighter yellowish streaks, which are particularly prominent on the breast. The head and shoulders are mostly pale greyish-yellowish. The rectrices and the secondary and tertiary remiges are pure grey, the latter contrasting with the brown forewing and the black primary remiges at the wingtips. The upperside and underside of the wing look similar, though the brown is lighter on the underwing. Whether from the side or below, flying males appear characteristically three-colored brown-grey-black. The legs, feet, irides and the cere of the black bill are yellow."
-      }
+      "description": ["hu", "en"],
+      "story": ["hu", "en"]
     },
     {
       "url": "tengelic.jpg",
+      "contentFolder": "tengelic",
       "title": {
         "hu": "Tengelic",
         "en": "European goldfinch"
       },
-      "description": {
-        "hu": "Egyik legszínesebb és leggyakoribb pintyfélénk. Szinte kizárólag csapatosan látni. A hideg idő beálltával gyakran találkozhatunk vele a madáretetőkön. Apró gyommagvakkal táplálkozik, de fiókái étrendjét bogarakkal és hernyókkal egészíti ki. Nagyrészt állandó, de télen észak-déli irányú kóborlása is megfigyelhető. Régebben dekoratív külseje miatt kalitkamadárnak tartották, de már régóta védett faj.",
-        "en": "The European goldfinch or goldfinch (Carduelis carduelis), is a small passerine bird in the finch family that is native to Europe, North Africa and western Asia. It has been introduced to other areas including Australia, New Zealand and Uruguay.<br>The goldfinch has a red face and a black-and-white head. The back and flanks are buff or chestnut brown. The black wings have a broad yellow bar. The tail is black and the rump is white. Males and females are very similar, but females have a slightly smaller red area on the face."
-      },
-      "story": {
-        "hu": "A tengelic (Carduelis carduelis) a madarak osztályának verébalakúak (Passeriformes) rendjébe és a pintyfélék (Fringillidae) családjába tartozó faj. Tápláléka félérett magvakból és bogyókból áll. A faj jelenleg nem veszélyeztetett. Népi elnevezése: stiglic, ami a madár német nevéből ered.",
-        "en": "The goldfinch was one of the birds described and illustrated by Swiss naturalist Conrad Gesner in his Historiae animalium of 1555.[2] The first formal description was by Carl Linnaeus in the 10th edition of his Systema Naturae published in 1758. He introduced the binomial name, Fringilla carduelis.[3][4] Carduelis is the Latin word for a goldfinch.[5] The genus Carduelis was introduced by the French zoologist Mathurin Jacques Brisson in 1760 by tautonomy based on Linneus's specific epithet.[6][7] Modern molecular genetic studies have shown that the European goldfinch is closely related to the citril finch, (Carduelis citrinella) and the Corsican finch, (Carduelis corsicana).[8]<br>The English word 'goldfinch' was used in the second half of the 14th century by Geoffrey Chaucer in his unfinished The Cook's Tale: 'Gaillard he was as goldfynch in the shawe (Gaily dressed he was as is a goldfinch in the woods)'.[9]"
-      }
+      "description": ["hu", "en"],
+      "story": ["hu", "en"]
     },
     {
       "url": "nyuszi.jpg",
+      "contentFolder": "nyuszi",
       "title": {
         "hu": "Mezei nyúl",
-        "en": "pier"
+        "en": "Pier"
       },
-      "description": {
-        "hu": "A mezei nyúl (Lepus europaeus) az emlősök (Mammalia) osztályának a nyúlalakúak (Lagomorpha) rendjébe, ezen belül a nyúlfélék (Leporidae) családjába tartozó faj."
-      },
-      "story": {
-        "en": "The European hare was first described in 1778 by German zoologist Peter Simon Pallas.[2] It shares the genus Lepus (Latin for 'hare'[3]) with 31 other hare and jackrabbit species,[4] jackrabbits being the name given to some species of hare native to North America. They are distinguished from other leporids (hares and rabbits) by their longer legs, wider nostrils and active (precocial) young.[5] The Corsican hare, broom hare and Granada hare were at one time considered to be subspecies of the European hare, but DNA sequencing and morphological analysis support their status as separate species.[6][7]"
-      }
+      "description": ["hu"],
+      "story": ["en"]
     }
   ]
 }
