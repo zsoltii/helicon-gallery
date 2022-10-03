@@ -1,16 +1,15 @@
-var INVALID_HTML_ELEMENTS = ["html", "body", "link", "script", "head"];
-var currentGallery = null;
-var galleryJson = null;
-var defaultLanguage = null;
-var currentLanguage = null;
-var currentPosition = null;
-var imagesLength = null;
-var queryString = (function(a) { //IE compatible
+const INVALID_HTML_ELEMENTS = ["html", "body", "link", "script", "head"];
+let currentGallery = null;
+let galleryJson = null;
+let defaultLanguage = null;
+let currentLanguage = null;
+let currentPosition = null;
+let imagesLength = null;
+const queryString = (function (a) { //IE compatible
     if (a == "") return {};
-    var b = {};
-    for (var i = 0; i < a.length; ++i)
-    {
-        var p=a[i].split('=', 2);
+    const b = {};
+    for (let i = 0; i < a.length; ++i) {
+        const p = a[i].split('=', 2);
         if (p.length == 1)
             b[p[0]] = "";
         else
@@ -18,6 +17,7 @@ var queryString = (function(a) { //IE compatible
     }
     return b;
 })(window.location.search.substr(1).split('&'));
+const cjs = new Castjs();
 
 $(document).ready(function () {
 
@@ -31,9 +31,9 @@ $(document).ready(function () {
     });
 
     $('.goLeft a').click(function (e) {
-       currentPosition--;
-       loadImage();
-       e.preventDefault();
+        currentPosition--;
+        loadImage();
+        e.preventDefault();
     });
 
     $('.goRight a').click(function (e) {
@@ -43,7 +43,7 @@ $(document).ready(function () {
     });
 
     $('.language button').click(function (e) {
-        if($('.language div.languageDropDown').hasClass('hidden')) {
+        if ($('.language div.languageDropDown').hasClass('hidden')) {
             $('.language div.languageDropDown').removeClass('hidden');
         } else {
             $('.language div.languageDropDown').addClass('hidden');
@@ -56,7 +56,7 @@ $(document).ready(function () {
         changeLanguage($(this).attr('data-language'));
         e.preventDefault();
     })
-    
+
     $('.function i.fa-arrow-up').click(function (e) {
         toggleFullScreen();
         e.preventDefault();
@@ -69,6 +69,13 @@ $(document).ready(function () {
 
     $('.function i.fa-eye-slash').click(function (e) {
         hideInfo();
+        e.preventDefault();
+    });
+
+    $('.function i.fa-chromecast').click(function (e) {
+        if (cjs.available) {
+            cjs.cast(getCastImageUrl());
+        }
         e.preventDefault();
     });
 
@@ -102,7 +109,7 @@ function getUrlParameter(parameter) {
 }
 
 function getGalleryPosition() {
-    var hash = '' + location.hash;
+    let hash = '' + location.hash;
     if (hash.length > 0) {
         hash = hash.substr(1);
     }
@@ -112,7 +119,7 @@ function getGalleryPosition() {
 function initGallery(data) {
     galleryJson = data;
 
-    var urlLanguage = getUrlParameter("language").trim();
+    const urlLanguage = getUrlParameter("language").trim();
     if (urlLanguage.length > 0 && galleryJson.languages.indexOf(urlLanguage) > -1) {
         defaultLanguage = urlLanguage;
     } else {
@@ -126,7 +133,7 @@ function initGallery(data) {
 
 function initCurrentPosition() {
     currentPosition = 0;
-    var urlPosition = getGalleryPosition();
+    const urlPosition = getGalleryPosition();
     if (!isNaN(urlPosition) && urlPosition > 1) {
         if (urlPosition > imagesLength) {
             currentPosition = imagesLength - 1;
@@ -139,7 +146,7 @@ function initCurrentPosition() {
 function changeLanguage(language) {
     currentLanguage = language;
 
-    var logoUrl = null;
+    const logoUrl = null;
 
     if (galleryJson.logo.hasOwnProperty(language)) {
         $('.logo div').css("background-image", "url('" + galleryJson.logo[language] + "')");
@@ -174,8 +181,8 @@ function loadImage() {
 }
 
 function setTitle() {
-    var hasTitle = galleryJson.title;
-    var newTitle = null;
+    const hasTitle = galleryJson.title;
+    let newTitle = null;
     if (hasTitle) {
         newTitle = galleryJson.title[currentLanguage];
         if ((newTitle == undefined) || newTitle == null) {
@@ -195,8 +202,8 @@ function setTitle() {
 }
 
 function setImageTitle() {
-    var hasImageTitle = !(galleryJson.images[currentPosition].title == undefined);
-    var newImageTitle = null;
+    const hasImageTitle = !(galleryJson.images[currentPosition].title == undefined);
+    let newImageTitle = null;
 
     if (hasImageTitle) {
         newImageTitle = galleryJson.images[currentPosition].title[currentLanguage];
@@ -216,18 +223,18 @@ function setImageTitle() {
 }
 
 function setDescription() {
-    var hasDescription = !(galleryJson.images[currentPosition].description == undefined);
-    var newDescription = null;
+    const hasDescription = !(galleryJson.images[currentPosition].description == undefined);
+    let newDescription = null;
 
     if (hasDescription) {
         if (arrayContains(galleryJson.images[currentPosition].description), currentLanguage) {
-            newDescription = getContent( currentLanguage, "description");
+            newDescription = getContent(currentLanguage, "description");
         }
         if (((newDescription == undefined) || newDescription == null) && arrayContains(galleryJson.images[currentPosition].description, defaultLanguage)) {
-            newDescription = getContent( defaultLanguage, "description");
+            newDescription = getContent(defaultLanguage, "description");
         }
         if ((newDescription == undefined) || newDescription == null) {
-            newDescription = getContent( getFirstValue(galleryJson.images[currentPosition].description), "description");
+            newDescription = getContent(getFirstValue(galleryJson.images[currentPosition].description), "description");
         }
     }
 
@@ -241,18 +248,18 @@ function setDescription() {
 }
 
 function setStory() {
-    var hasStory = !(galleryJson.images[currentPosition].story == undefined);
-    var newStory = null;
+    const hasStory = !(galleryJson.images[currentPosition].story == undefined);
+    let newStory = null;
 
     if (hasStory) {
         if (arrayContains(galleryJson.images[currentPosition].story), currentLanguage) {
-            newStory = getContent( currentLanguage, "story");
+            newStory = getContent(currentLanguage, "story");
         }
         if (((newStory == undefined) || newStory == null) && arrayContains(galleryJson.images[currentPosition].story, defaultLanguage)) {
-            newStory = getContent( defaultLanguage, "story");
+            newStory = getContent(defaultLanguage, "story");
         }
         if ((newStory == undefined) || newStory == null) {
-            newStory = getContent( getFirstValue(galleryJson.images[currentPosition].story), "story");
+            newStory = getContent(getFirstValue(galleryJson.images[currentPosition].story), "story");
         }
     }
 
@@ -265,17 +272,34 @@ function setStory() {
     }
 }
 
+function getImagePath() {
+    return galleryJson.images[currentPosition].url;
+}
+
+function getImageUrl(imagePath) {
+    return 'gallery/' + currentGallery + '/image/' + imagePath;
+}
+
+function getCastImageUrl() {
+    const imagePath = getImagePath();
+    const imageUrl = getImageUrl(imagePath);
+    const protocol = location.protocol;
+    const hostname = location.hostname;
+    const path = location.pathname.substring(0, location.pathname.lastIndexOf("/"));
+    return protocol + "//" + hostname + path + "/" + imageUrl;
+}
+
 function setImage() {
-    var newImageUrl = galleryJson.images[currentPosition].url;
+    const newImageUrl = getImagePath();
     if ((newImageUrl == undefined) || newImageUrl == null) {
         alert("image data error");
     } else {
-        $("#heliconGalley").backstretch('gallery/' + currentGallery + '/image/' + newImageUrl);
+        $("#heliconGalley").backstretch(getImageUrl(newImageUrl));
     }
 }
 
 function processNavigationVisibility() {
-    if(currentPosition == 0) {
+    if (currentPosition == 0) {
         $('.goLeft').hide();
     } else {
         $('.goLeft').show();
@@ -305,7 +329,7 @@ function showInfo() {
 }
 
 function toggleFullScreen() {
-    if(document.fullscreenElement || document.MSFullscreenElement || document.mozFullScreenElement || document.webkitFullscreenElement) {
+    if (document.fullscreenElement || document.MSFullscreenElement || document.mozFullScreenElement || document.webkitFullscreenElement) {
         if (document.exitFullscreen) {
             document.exitFullscreen();
         } else if (document.msExitFullscreen) {
@@ -330,7 +354,7 @@ function toggleFullScreen() {
 }
 
 function changeFullScreenIcon(event) {
-    if(document.fullscreenElement || document.msFullscreenElement || document.mozFullScreenElement || document.webkitFullscreenElement) {
+    if (document.fullscreenElement || document.msFullscreenElement || document.mozFullScreenElement || document.webkitFullscreenElement) {
         $('div i.fas.fa-arrow-up').addClass('fullscreen');
     } else {
         $('div i.fas.fa-arrow-up').removeClass('fullscreen');
@@ -351,10 +375,10 @@ function getContent(language, type) {
     jQuery.ajax({
         url: url,
         async: false,
-        success: function(data) {
+        success: function (data) {
             result = data;
         },
-        error: function (xhr, ajaxOptions, thrownError){
+        error: function (xhr, ajaxOptions, thrownError) {
             console.log("Server error. [status: " + xhr.status + "][throw: " + thrownError + "][url: " + url + "]");
         }
     });
