@@ -285,8 +285,9 @@ function getCastImageUrl() {
     const imageUrl = getImageUrl(imagePath);
     const protocol = location.protocol;
     const hostname = location.hostname;
+    const port = location.port;
     const path = location.pathname.substring(0, location.pathname.lastIndexOf("/"));
-    return protocol + "//" + hostname + path + "/" + imageUrl;
+    return protocol + "//" + hostname + ":" + port + path + "/" + imageUrl;
 }
 
 function setImage() {
