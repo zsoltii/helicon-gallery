@@ -17,7 +17,18 @@ const queryString = (function (a) { //IE compatible
     }
     return b;
 })(window.location.search.substr(1).split('&'));
+let castEnabled = false;
 const cjs = new Castjs();
+
+function castAvailable(logMessage) {
+    $('.function i.fa-solid.fa-tower-broadcast').hide();
+    $('.function i.fa-solid.fa-podcast').show();
+    $('.function i.fa-brands.fa-chromecast').hide();
+    castEnabled = false;
+    if(logMessage) {
+        console.info(logMessage);
+    }
+}
 
 $(document).ready(function () {
 
@@ -72,11 +83,38 @@ $(document).ready(function () {
         e.preventDefault();
     });
 
-    $('.function i.fa-chromecast').click(function (e) {
+    $('.function i.fa-solid.fa-podcast').click(function (e) {
         if (cjs.available) {
-            cjs.cast(getCastImageUrl());
+            const castImageUrl = getCastImageUrl();
+            cjs.cast(castImageUrl);
+            castEnabled = true;
+            $('.function i.fa-solid.fa-podcast').hide();
+            $('.function i.fa-brands.fa-chromecast').show();
+            console.info("Cast url: " + castImageUrl);
+        } else {
+            console.warn("ChromeCast is not available");
+            castEnabled = false;
+            $('.function i.fa-solid.fa-tower-broadcast').show();
+            $('.function i.fa-solid.fa-podcast').hide();
+            $('.function i.fa-brands.fa-chromecast').hide();
         }
         e.preventDefault();
+    });
+
+    $('.function i.fa-brands.fa-chromecast').click(function (e) {
+        cjs.disconnect();
+    });
+
+    cjs.on('available', () => {
+        castAvailable("ChromeCast is available");
+    });
+
+    cjs.on('disconnect', () => {
+        castAvailable("ChromeCast disconnected");
+    });
+
+    cjs.on('event', (e) => {
+        console.log(e);
     });
 
     $(document).keydown(function (e) {
@@ -296,6 +334,11 @@ function setImage() {
         alert("image data error");
     } else {
         $("#heliconGalley").backstretch(getImageUrl(newImageUrl));
+        if(castEnabled) {
+            const castImageUrl = getCastImageUrl();
+            cjs.cast(castImageUrl);
+            console.info("Cast url: " + castImageUrl);
+        }
     }
 }
 
